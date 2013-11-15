@@ -1,5 +1,9 @@
 # A Virtual Machine for Ruby on Rails Core Development
 
+## Fields of Fuel
+
+This repository is a clone of [rails-dev-box](https://github.com/rails/rails-dev-box), customized for [Fields of Fuel](http://fieldsoffuel.discovery.wisc.edu)
+
 ## Introduction
 
 This project automates the setup of a development environment for working on Ruby on Rails itself. Use this virtual machine to work on a pull request with everything ready to hack and run the test suites.
