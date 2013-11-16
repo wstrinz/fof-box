@@ -4,6 +4,37 @@
 
 This repository is a clone of [rails-dev-box](https://github.com/rails/rails-dev-box), customized for [Fields of Fuel](http://fieldsoffuel.discovery.wisc.edu)
 
+To get started, run
+
+```shell
+git clone https://github.com/wstrinz/fof-box.git
+cd fof-box
+vagrant up
+```
+
+This will set up a virtualized development environment for you. To download and start the game, you must connect to your vagrant instance via ssh.
+Generally, you use the command
+
+```shell
+vagrant ssh
+```
+
+Windows hosts may require additional steps. Once you have accessed your Vagrant instance, change to the /vagrant directory and run the setup script
+
+```shell
+cd /vagrant
+./fof-setup.sh
+```
+
+You can then start the server components manually, or using the start-fof script
+
+```shell
+cd /vagrant
+./start-fof.sh
+```
+
+The game will then be accessible at [localhost:3000](http://localhost:3000)
+
 ## Introduction
 
 This project automates the setup of a development environment for working on Ruby on Rails itself. Use this virtual machine to work on a pull request with everything ready to hack and run the test suites.
