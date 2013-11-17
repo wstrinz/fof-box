@@ -12,21 +12,21 @@ cd fof-box
 vagrant up
 ```
 
-This will set up a virtualized development environment for you. To download and start the game, you must connect to your vagrant instance via ssh.
-Generally, you use the command
+This will set up a virtualized development environment. To download and start the game, first connect to your vagrant instance via ssh.
+On Mac or Linux this can be done using one command;
 
 ```shell
 vagrant ssh
 ```
 
-Windows hosts may require additional steps. Once you have accessed your Vagrant instance, change to the /vagrant directory and run the setup script
+Windows hosts may require additional steps. After connecting to the Vagrant instance, change to the /vagrant directory and run the setup script
 
 ```shell
 cd /vagrant
 ./fof-setup.sh
 ```
 
-You can then start the server components manually, or using the start-fof script
+The server can then be started manually, or by running the start-fof script
 
 ```shell
 cd /vagrant
