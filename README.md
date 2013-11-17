@@ -33,7 +33,7 @@ cd /vagrant
 ./start-fof.sh
 ```
 
-The game will then be accessible at [localhost:3000](http://localhost:3000)
+The game will be accessible at [localhost:3000](http://localhost:3000)
 
 ## Introduction
 
