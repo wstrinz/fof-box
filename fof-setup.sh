@@ -12,5 +12,5 @@ cd ..
 git clone https://github.com/wstrinz/Fields-of-Fuel-Model.git
 cd Fields-of-Fuel-Model
 git checkout development
-rvm use jruby-1.7.6
+rvm use jruby
 bundle
