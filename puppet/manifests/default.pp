@@ -103,7 +103,23 @@ package { 'curl':
   ensure => installed
 }
 
+package { 'vim':
+  ensure => installed
+}
+
 package { 'build-essential':
+  ensure => installed
+}
+
+package { 'dos2unix':
+  ensure => installed
+}
+
+package { 'openjdk-7-jdk':
+  ensure => installed
+}
+
+package { 'icedtea-7-plugin':
   ensure => installed
 }
 
@@ -121,6 +137,16 @@ package { 'nodejs':
   ensure => installed
 }
 
+# FoF Requirements
+
+package { 'redis-server':
+  ensure => installed
+}
+
+package { 'maven':
+  ensure => installed
+}
+
 # --- Ruby ---------------------------------------------------------------------
 
 exec { 'install_rvm':
@@ -135,9 +161,28 @@ exec { 'install_ruby':
   # The rvm executable is more suitable for automated installs.
   #
   # Thanks to @mpapis for this tip.
-  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 2.0.0 --latest-binary --autolibs=enabled && rvm --fuzzy alias create default 2.0.0 && ${home}/.rvm/bin/rvm install jruby'",
+  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 2.0.0 --latest-binary --autolibs=enabled && rvm --fuzzy alias create default 2.0.0'",
   creates => "${home}/.rvm/bin/ruby",
   require => Exec['install_rvm']
+}
+
+exec { 'install_jruby':
+  command => "${as_vagrant} '${home}/.rvm/bin/rvm install jruby'",
+  creates => "${home}/.rvm/bin/jruby-1.7.8",
+  require => Exec['install_rvm']
+}
+
+
+exec { 'convert scripts':
+  # Should eventually fix CRLF/LF problems in repo, but this will take care of them for now
+
+  command => "${as_vagrant} 'cd /vagrant && dos2unix fof-setup.sh && dos2unix start-fof.sh'",
+  require => Package['dos2unix']
+}
+
+exec { 'use java 7':
+  command => "${as_vagrant} 'sudo update-java-alternatives -s java-1.7.0-openjdk-i386'",
+  require => Package['openjdk-7-jdk', 'icedtea-7-plugin']
 }
 
 exec { "${as_vagrant} 'gem install bundler --no-rdoc --no-ri'":

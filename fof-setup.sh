@@ -1,4 +1,3 @@
-sudo apt-get install redis-server
 [ -s "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
 mkdir fof
 cd fof
